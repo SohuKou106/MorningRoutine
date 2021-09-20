@@ -2,7 +2,7 @@
 M5StickCから計測した3軸加速度をRGB値に変換して時系列データから100x100 pixelの画像を生成します。
 
 # Requirement
-・Visual Studio 2019で作成しました。
+・Visual Studio 2019で作成しました。　　
 ・M5StickCを使用します。  
 ・追加でインストールが必要なライブラリはございません。
 
