@@ -6,7 +6,7 @@ M5StickCから計測した3軸加速度をRGB値に変換して時系列デー�
 ・追加でインストールが必要なライブラリはございません。
 
 # Demo
-
+https://github.com/SohuKou106/MorningRoutine/issues/1
 
 # Usage
 1. M5StickCにスケッチ（）を書き込んで起動します。
