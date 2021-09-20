@@ -1,5 +1,4 @@
-﻿using InTheHand.Net.Bluetooth;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,7 +14,7 @@ namespace MorningRoutine
 {
     public partial class Form1 : Form
     {
-        const int dataPoints = 100;
+        const int dataPoints = 10000;
         const int brightness = 2400;    //画像の輝度。大きくすると明るく、小さくすると暗くなります。
         Stopwatch sw = new Stopwatch();
         Sensor sensor = new Sensor();

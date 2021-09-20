@@ -1,5 +1,4 @@
-﻿using InTheHand.Net.Sockets;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Linq;
