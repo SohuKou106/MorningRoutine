@@ -15,7 +15,7 @@ namespace MorningRoutine
 {
     public partial class Form1 : Form
     {
-        const int dataPoints = 10000;
+        const int dataPoints = 100;
         const int brightness = 2400;    //画像の輝度。大きくすると明るく、小さくすると暗くなります。
         Stopwatch sw = new Stopwatch();
         Sensor sensor = new Sensor();
@@ -35,6 +35,11 @@ namespace MorningRoutine
             this.MaximizeBox = false;
             this.MinimizeBox = false;
 
+            if (!File.Exists("Result"))
+            {
+                new DirectoryInfo("Result").Create();
+            }
+
             labelX.Text = "接続しています...";
 
             sensor.Connect();
@@ -43,9 +48,10 @@ namespace MorningRoutine
 
         private void button1_Click(object sender, EventArgs e)
         {
+            data_num = 0;
             sensor.sendData("d");
             writer = new StreamWriter("Result/res.csv", false, Encoding.UTF8);
-            sw.Start();
+            sw.Restart();
             timer1.Start();
             button1.Enabled = false;
 
@@ -132,7 +138,12 @@ namespace MorningRoutine
             sensor.sendData("e");
             DateTime dt = DateTime.Now;
             Image img = pictureBox1.Image;
-            img.Save(string.Format("Result/{0}_{1}_{2}.png",dt.Year, dt.Month, dt.Day));
+            int duplicateNum = 1;
+            while (File.Exists($"Result/{dt.Year}_{dt.Month:d2}_{dt.Day:d2}_{duplicateNum}.png"))
+            {
+                duplicateNum++;
+            }
+            img.Save($"Result/{dt.Year}_{dt.Month:d2}_{dt.Day:d2}_{duplicateNum}.png");
         }
 
         void drawPixel(double[] color, int x, int y) 
