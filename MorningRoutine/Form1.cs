@@ -41,7 +41,11 @@ namespace MorningRoutine
 
             labelX.Text = "接続しています...";
 
-            sensor.Connect();
+            bool connected = sensor.Connect();
+            if (!connected)
+            {
+                this.Close();
+            }
             labelX.Text = "ボタンを押してください";
         }
 

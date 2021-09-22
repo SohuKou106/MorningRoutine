@@ -20,10 +20,17 @@ namespace MorningRoutine
         public bool Connect()
         {
             COMPort = "COM4";       //適宜変更してください
-            connectflag = true;
-            Console.WriteLine("接続中");
-            sensorPort = new SerialPort(COMPort, 115200, Parity.None, 8, StopBits.One);
-            sensorPort.Open();
+            try
+            {
+                sensorPort = new SerialPort(COMPort, 115200, Parity.None, 8, StopBits.One);
+                sensorPort.Open();
+                connectflag = true;
+            }
+            catch
+            {
+                MessageBox.Show("センサーが見つかりませんでした。", "接続エラー", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                connectflag = false;
+            }
 
             return connectflag;
         }
